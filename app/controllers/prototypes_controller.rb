@@ -1,6 +1,6 @@
 class PrototypesController < ApplicationController
+  before_action :move_to_indexs, except: [:index, :show]
   before_action :move_to_index, only: [:edit]
-  before_action :move_to_indexs, expext: [:index, :show]
 
 
   def index
@@ -63,8 +63,8 @@ class PrototypesController < ApplicationController
 
   def move_to_indexs
     unless user_signed_in?
-    redirect_to root_path
+      redirect_to root_path
+    end
   end
 
-  end
 end
