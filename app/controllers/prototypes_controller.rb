@@ -1,5 +1,7 @@
 class PrototypesController < ApplicationController
   before_action :move_to_index, only: [:edit]
+  before_action :move_to_indexs, expext: [:index, :show]
+
 
   def index
     @prototypes = Prototype.all
@@ -57,5 +59,12 @@ class PrototypesController < ApplicationController
     unless user_signed_in? && current_user.id == prototype.user.id
       redirect_to root_path
     end
+  end
+
+  def move_to_indexs
+    unless user_signed_in?
+    redirect_to root_path
+  end
+
   end
 end
